@@ -2,11 +2,11 @@ main = interact $ unlines . (\x -> ["A", a x, "B", b x]) . fmap (fmap read . wor
 
 a = show . length . filter (\ds -> all (inRng 1 3) ds || all (inRng (-3) (-1)) ds) . fmap diffs
 
-b = show . length . filter (\ds -> allButOneLinearTime (inRng 1 3) ds || allButOneLinearTime (inRng (-3) (-1)) ds) . fmap diffs
+b = show . length . filter (\ds -> maneater (inRng 1 3) ds || maneater (inRng (-3) (-1)) ds) . fmap diffs
     where
-        allButOneLinearTime :: (Int -> Bool) -> [Int] -> Bool
-        allButOneLinearTime ok []     = True
-        allButOneLinearTime ok (x:xs) = go Nothing x xs
+        maneater :: (Int -> Bool) -> [Int] -> Bool
+        maneater ok []     = True
+        maneater ok (x:xs) = go Nothing x xs
             where
                 go :: Maybe Int -> Int -> [Int] -> Bool
                 go _  y []     = True
@@ -16,4 +16,4 @@ b = show . length . filter (\ds -> allButOneLinearTime (inRng 1 3) ds || allButO
 
 inRng l h x = l <= x && x <= h
 
-diffs xs = zipWith (-) xs (drop 1 xs)
+diffs xs = zipWith (flip (-)) xs (tail xs)
