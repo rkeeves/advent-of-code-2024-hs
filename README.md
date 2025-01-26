@@ -1,6 +1,8 @@
 # Advent of Code 2024
 
-[.](https://youtu.be/yM0vS0n-1rI?t=21)
+Martin Fowler has 0 repos.
+
+[Uncle Bob](https://github.com/unclebob/AOC24) has a repo for '24 where he did 14... so I'll do 14.
 
 ## Sketches
 
